@@ -1,0 +1,491 @@
+/* Common CSS */
+:root{
+	--primary-font: 'Poppins', sans-serif;
+	--secondary-font: 'Raleway', sans-serif;
+	--primary-color: #1769ff;
+	--opacity-color: rgba(23, 105, 255,0.78);
+}
+
+::selection{
+	color: $primary-color;
+	background: #ffffff;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body{
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	&::-webkit-scrollbar{
+		width: 6px;
+	}
+	&::-webkit-scrollbar-thumb{
+		border-radius: 10px;
+		background: #ccc;
+	}
+}
+
+body {
+	color: #333333;
+	font-family: $primary-font;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+a,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: inherit;
+	outline: none;
+}
+
+button,
+button:hover,
+button:focus,
+button:active {
+	outline: none;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+/*All Transition Style*/
+.transition{
+	transition: all ease-in-out .3s;
+}
+
+/*Section Spacing Style*/
+.section-padding{
+	padding: 165px 0;
+	@include desktop{
+		padding: 100px 0;
+	}
+	@include tablet{
+		padding: 50px 0;
+	}
+}
+
+/*Section Background Style*/
+.section-bg{
+	background: #f4f4f4;
+}
+
+/*Common Button Style*/
+.btn-hire{
+	color: $primary-color !important;
+	border-width: 2px !important;
+	border-color: $primary-color !important;
+	padding: .5rem 1.5rem !important;
+	&:hover{
+		color:#fff !important;
+		background-color: $primary-color;
+	}
+}
+
+/*Section Header Style*/
+.section-header{
+	margin-bottom: 70px;
+	&__title{
+		z-index: 1;
+		&::before{
+			content: attr(data-text);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			font-size: 55px;
+			color: #eeeeee;
+			z-index: -1;
+			font-weight: 600;
+			user-select: none;
+			@include mobile{
+				font-size: 50px;
+			}
+		}
+	}
+}
+
+/*Header(Navbar) Style*/
+.header{
+	top: 0;
+	padding: 40px 0 0;
+	z-index: 999;
+	@include tablet{
+		background: #f4f2f0;
+	}
+	&--bg{
+		background: #f4f2f0;
+		padding: initial;
+		box-shadow: 0 2px 10px rgba($color: #000000, $alpha: 0.10);
+	}
+	.navbar{
+		.navbar-brand img{
+			@include mobile{
+				max-width: 200px;
+			}
+			@media (max-width:320px) {
+				max-width: 160px;
+			}
+		}
+		.navbar-nav{
+			@include tablet{
+				align-items: center;
+			}
+			.nav-item{
+				margin-left: 60px;
+				@include desktop{
+					margin-left: 10px;
+				}
+				@include tablet{
+					margin-left: initial;
+				}
+				.nav-link{
+					font-size: 20px;
+					color: #333333;
+					transition: all ease-in-out .3s;
+					&:hover,&.active{
+						color: $primary-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*Banner Style*/
+.banner{
+	background: url(../images/banner.png) no-repeat center;
+	background-size: cover;
+	@include desktop{
+		background-size: initial;
+	}
+	@include tablet{
+		background-position: right;
+	}
+	@media (min-width:1600px) {
+		padding: 400px 0 200px;
+	}
+	@media (max-width:1599px) {
+		padding: 180px 0 100px;
+	}
+	&__content{
+		@include desktop{
+			text-align: center;
+			color: #848484;
+		}
+		@include tablet{
+			text-align: center;
+			color: initial;
+		}
+	}
+	&__subHeading{
+		font-family: $secondary-font;
+		font-weight: 300;
+	}
+	&__heading{
+		font-weight: 400;
+		@media (max-width:320px) {
+			font-size: 35px;
+		}
+	}
+	&__txt{
+		@media (min-width:1500px) {
+			padding-right: 150px;
+		}
+		@include desktop{
+			font-size: 20px;
+		}
+		@include tablet{
+			font-size: initial;
+		}
+	}
+	&__btn{
+		color:#fff;
+		background-color: $primary-color;
+		font-weight: 500;
+		border-color: $primary-color !important;
+		padding: .7rem 2rem;
+		&:hover{
+			color: $primary-color;
+			background-color:transparent;
+		}
+	}
+}
+
+/*Services Style*/
+.services{
+	&__block{
+		padding: 45px 30px;
+		border-radius: 10px;
+		cursor: pointer;
+		&:hover{
+			background: $primary-color;
+			box-shadow: 0 5px 30px rgba($color: #000000, $alpha: 0.25);
+			.services__icon,
+			.services__title,
+			.services__txt{
+				color: #ffffff;
+			}
+			.services__title::after{
+				background: #ffffff;
+			}
+		}
+	}
+	&__icon{
+		color: $primary-color;
+		font-size: 30px;
+		margin-bottom: 40px;
+	}
+	&__title{
+		font-weight: 500;
+		color: #222222;
+		margin-bottom: 50px;
+		&::after{
+			content: "";
+			position: absolute;
+			bottom: -100%;
+			left: 50%;
+			transform: translate(-50%, 80%);
+			width: 40px;
+			height: 2px;
+			background: $primary-color;
+			transition: all ease-in-out .3s;
+		}
+	}
+	&__txt{
+		font-size: 15px;
+	}
+}
+
+/*Hire Me Style*/
+.hire-me{
+	&__title{
+		font-weight: 300;
+	}
+	.btn-hire{
+		font-weight: 500;
+		font-size: 18px;
+	}
+}
+
+/*Portfolio Style*/
+.portfolio{
+	&__block{
+		cursor: pointer;
+		&:hover .portfolio__overlay{
+			opacity: 1;
+		}
+	}
+	&__overlay{
+		top: 0;
+		left: 0;
+		background: $opacity-color;
+		opacity: 0;
+		&::after{
+			content: "";
+			position: absolute;
+			bottom: -5px;
+			right: -5px;
+			background:#f4f4f4;
+			width: 82px;
+			height: 82px;
+			clip-path: polygon(100% 0,100% 100%,0 100%);
+		}
+	}
+	&__subHeading{
+		font-weight: 400;
+		font-size: 24px;
+	}
+	&__heading{
+		font-weight: 600;
+		font-size: 24px;
+		@include tablet{
+			font-size: 20px;
+		}
+		&::after{
+			content: "";
+			position: absolute;
+			bottom: -30%;
+			left: 50%;
+			transform: translateX(-50%);
+			background:#fafafa;
+			width: 40px;
+			height: 2px;
+		}
+	}
+}
+
+/*Feedback Style*/
+.feedback{
+	.quote{
+		position: relative;
+		z-index: 1;
+		&::before{
+			font-family: "Font Awesome 5 Free";
+			font-weight: 900;
+			position: absolute;
+			color: #eeeded;
+			z-index: -1;
+			font-size: 120px;
+		}
+		&.quote--right::before{
+			content: "\f10e";
+			left: 0;
+			top: 50%;
+			transform: translate(-50%,-35%);
+		}
+		&.quote--left::before{
+			content: "\f10e";
+			right: 0;
+			bottom: 0;
+			transform: translate(0%,-5%) rotateY(180deg);
+		}
+	}
+	&__block{
+		outline: none;
+	}
+	&__heading{
+		color: #0a0b0c;
+		font-weight: 300;
+	}
+	&__slider{
+		.slick-dots{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 30px 0 0;
+			li{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 10px;
+				button{
+					position: relative;
+					font-size: 0;
+					width: 5px;
+					height: 5px;
+					border-radius: 50%;
+					background: #c9c9c9;
+					border: 0;
+				}
+				&.slick-active button{
+					background: $primary-color;
+					&::after{
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%,-50%);
+						width: 20px;
+						height: 20px;
+						background: transparent;
+						border: 1px solid $primary-color;
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+	}
+	&__img{
+		border: 4px solid #fff;
+	}
+	&__client{
+		font-family: $secondary-font;
+		font-weight: 500;
+	}
+	&__role{
+		font-family: $secondary-font;
+		color: #8b8b8b;
+		font-size: 16px;
+	}
+	&__txt{
+		font-weight: 500;
+	}
+}
+
+/*Footer Style*/
+.footer{
+	&__top{
+		padding-top: 80px ;
+		padding-bottom: 80px ;
+		@include tablet{
+			padding-top: 50px ;
+			padding-bottom: 50px ;
+		}
+		.nav{
+			&__item{
+				@media (max-width:340px) {
+					margin-right: 0;
+				}
+				.form-control{
+					height: 48px;
+					max-width: 230px;
+					border-color: #999;
+					&::placeholder{
+						opacity: 1;
+					}
+					&:focus{
+						border-color: $primary-color;
+					}
+				}
+				.btn{
+					right: 0;
+					font-size: 18px;
+					color: #444444;
+					&:hover{
+						color: $primary-color;
+					}
+				}
+			}
+			&__link{
+				font-size: 18px;
+				color: #222222;
+				&:hover{
+					color: $primary-color;
+				}
+			}
+	
+		}
+		.footer__social{
+			.social__icon{
+				width: 50px;
+				height: 50px;
+				background: #f4f4f4;
+				color: #a7a7a7;
+				&--facebook:hover{
+					background: #1877f2;
+				}
+				&--twitter:hover{
+					background: #1da1f2;
+				}
+				&--instagram:hover{
+					background:#e7375d;
+				}
+				&--youtube:hover{
+					background:#ff0000;
+				}
+				&:hover{
+					color: #ffffff;
+					box-shadow: 0 5px 20px rgba($color: #000000, $alpha: 0.25);
+				}
+			}
+		}
+	}
+	&__bottom{
+		padding: 40px 0;
+		border-top: 1px solid #ececec;
+		@include mobile{
+			padding: 20px 0;	
+		}
+		p{
+			font-family: $primary-font;
+		}
+	}
+}
